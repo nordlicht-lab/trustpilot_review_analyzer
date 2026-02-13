@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from trustpilot_analyzer.harvester.harvester import fetch_next_data
-from trustpilot_analyzer.analyst.analyst import (
+import sys
+import os
+
+# Add parent directory to path to allow imports from root
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from harvester.harvester import fetch_next_data
+from analyst.analyst import (
     extract_aggregate_star_distribution,
     extract_main_page_star_distribution,
     extract_reviews_over_time,
@@ -11,7 +17,7 @@ from trustpilot_analyzer.analyst.analyst import (
     calculate_recent_reviews_count,
     analyze_reply_behavior
 )
-from trustpilot_analyzer.config import PREDEFINED_DOMAINS
+from config import PREDEFINED_DOMAINS
 
 #RATING_COLOR_MAP = {
 #    "1": "#E53935",  # Adjusted Red: Less neon, more professional
